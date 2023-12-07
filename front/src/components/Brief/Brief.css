@@ -1,0 +1,93 @@
+.formContainer {
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 30px 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.formContainer h2 {
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.formContainer input {
+    padding: 0px 10px 0px 10px;
+    border: 1.5px solid black;
+    font-weight: 600;
+}
+
+.formContainer .send {
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+}
+
+.formContainer .send:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+.formContainer .send:disabled,
+.send[disabled] {
+    transition: all 0.5s ease-in-out;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.formContainer .comprobacion {
+    padding: 7px 10px 7px 10px;
+    border: 2px solid red;
+    border-radius: 3px;
+    color: black;
+    font-weight: 700;
+}
+
+
+.orderReady {
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 30px 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+
+}
+
+.orderReady h3 {
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.orderReady p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.orderReady button {
+    margin: 15px;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.orderReady button a {
+    color: white;
+    text-decoration: none;
+}
+
+.orderReady button a:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}

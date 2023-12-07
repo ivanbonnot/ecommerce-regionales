@@ -1,0 +1,17 @@
+
+
+.card:hover {
+    box-shadow: 2px 5px 10px 1px black !important;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+}
+
+.card-body {
+    padding: 2rem 0 !important;
+}
+
+.card-text {
+    padding: 0.3rem 1rem;
+    font-size: 1rem;
+}
+

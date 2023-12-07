@@ -1,0 +1,47 @@
+.container {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.spinner {
+    width: 100vw;
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(80, 80, 80, 0.555) !important;
+}
+
+.container .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .card-img-top {
+    margin-top: 20px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.container button {
+
+    margin: 15px;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    
+    color: white;
+    font-weight: bold;
+}
+
+.container button a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.container button a:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}

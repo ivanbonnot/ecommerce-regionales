@@ -1,0 +1,123 @@
+.noProduct {
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 30px 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+.noProduct h3 {
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.noProduct button {
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.noProduct button a {
+    color: white;
+    text-decoration: none;
+}
+
+.noProduct button a:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.product {
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 30px 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.product h1 {
+    letter-spacing: 2px;
+}
+
+.product .detailContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 30px 5px 30px;
+}
+
+.product .detailContainer .delete{
+    margin-left: 15px;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+
+.product .detailContainer .delete:hover {
+    color: rgb(247, 131, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+.product .detailContainer{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.product .total {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.product .buy {
+    margin: 15px;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.product .buy a{
+    color: white;
+    text-decoration: none;
+}
+
+.product .buy a:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+.product .clear {
+    margin: 5px 0px 0px 0px;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.product .clear:hover {
+    color: rgb(247, 131, 131);
+    transition: all 0.3s ease-in-out;
+}

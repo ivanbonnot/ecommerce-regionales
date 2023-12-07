@@ -1,0 +1,86 @@
+
+
+.count{ 
+    width: fit-content;
+    margin: auto;
+    padding: 1rem;
+    background-color: rgb(49, 49, 49);
+    text-align: center;
+}
+
+.count.noStock {
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.count span{
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
+} 
+
+.count p {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.count .down {
+    border-radius: 5px;
+    background-color: black;
+    font-size: 25px;
+    color: white;
+    padding: 2px 8px 2px 8px;
+}
+
+
+.count .down:disabled,
+.send[disabled] {
+    transition: all 0.5s ease-in-out;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.count .down:hover {
+    color: rgb(247, 131, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+.count .up {
+    border-radius: 5px;
+    background-color: black;
+    font-size: 25px;
+    color: white;
+    padding: 2px 8px 2px 8px;
+}
+
+.count .up:disabled,
+.send[disabled] {
+    transition: all 0.5s ease-in-out;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.count .up:hover {
+    color: rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}
+
+.count .addCart {
+    padding: 10px 25px 10px 25px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: black;
+    font-size: 24px;
+    color: white;
+    border: 0.5px solid white;
+}
+
+.count .addCart:hover {
+    color: rgb(131, 247, 131);
+    border: 0.5px solid rgb(131, 247, 131);
+    transition: all 0.3s ease-in-out;
+}

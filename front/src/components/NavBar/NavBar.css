@@ -1,0 +1,7 @@
+.bg-navbar {
+    background-color: var(--color-dark-nav-footer);
+}
+
+.links-color {
+    color: white;
+}
