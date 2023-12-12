@@ -1,8 +1,19 @@
-.App {
+.app__bg {
+  height: 100dvh;
+  width: 100vw;
   text-align: center;
+  background-color: var(--color-dark-background);
 }
 
-.App-logo {
+
+.app__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+.app-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -13,9 +24,9 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header {
+
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,14 +35,98 @@
   color: white;
 }
 
-.App-link {
+.app-link {
   color: #61dafb;
 }
+
+.flex__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p__cormorant {
+  font-family: var(--font-base);
+  color: var(--color-white);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  line-height: 29.9px;
+  font-size: 23px;
+}
+
+.p__opensans {
+  font-family: var(--font-alt);
+  color: var(--color-white);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+.custom__button {
+  background-color: var(--color-dark-button-inside);
+  color: var(--color-dark-button-text);
+  border: 1.5px solid var(--color-dark-button-border);
+  border-radius: 5px;
+  font-family: var(--font-base);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 28px;
+  font-size: 16px;
+  padding: 0.5rem 1.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.custom__button:hover {
+  transition: all ease-in-out 300ms;
+  background-color: var(--color-dark-buttonhover-inside);
+  color: var(--color-dark-buttonhover-text);
+  transform: scale(1.02);
+}
+
+.custom__button:disabled {
+  background-color: var(--color-dark-btndisabled);
+  color: var(--color-dark-btndisabledtext);
+  font-family: var(--font-base);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 28px;
+  font-size: 16px;
+  padding: 0.5rem 1.5rem;
+  outline: none;
+  cursor: default;
+}
+
+.delete__button {
+  background-color: red;
+  color: var(--color-black);
+  font-family: var(--font-base);
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 28px;
+  font-size: 16px;
+  padding: 0.1rem 0.5rem;
+  margin: 0.5rem;
+  border-radius: 1px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.delete__button:hover {
+  transition: all ease-in-out 300ms;
+  color: white;
+  transform: scale(1.02);
+}
+
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
