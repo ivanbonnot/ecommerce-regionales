@@ -29,7 +29,7 @@ const baseProcces = () => {
     const { Server: HTTPServer } = require('http');
 
     const infoRouter = require('../routes/api/infoRouter')
-    const notesRouter = require("../routes/api/notesRouter");
+    const productsRouter = require("../routes/api/productsRouter");
     const authWebRouter = require('../routes/web/authRouter')
 
 
@@ -78,10 +78,10 @@ const baseProcces = () => {
     app.use((req, res, next) => {
         const allowedOrigins = [
             'http://localhost:3000',
-            'https://apianotador.ivanbodeveloper.com',
-            'https://anotador.ivanbodeveloper.com',
-            'http://anotador.ivanbodeveloper.com',
-            'http://apianotador.ivanbodeveloper.com',
+            'https://apiartesanias.ivanbodeveloper.com',
+            'https://artesanias.ivanbodeveloper.com',
+            'http://artesanias.ivanbodeveloper.com',
+            'http://apiartesanias.ivanbodeveloper.com',
         ];
 
         const origin = req.headers.origin;
@@ -93,7 +93,7 @@ const baseProcces = () => {
         next();
     });
 
-   
+
     const PORT = 8080
     const server = httpServer.listen(PORT, () => {
         connectToDb("mongo")
@@ -103,7 +103,7 @@ const baseProcces = () => {
 
     //Routes
     app.use("/", infoRouter)
-    app.use("/", notesRouter)
+    app.use("/", productsRouter)
     //__ WebServ Routes __//
     app.use("/", authWebRouter)
 

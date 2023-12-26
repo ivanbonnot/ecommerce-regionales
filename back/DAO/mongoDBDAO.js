@@ -1,4 +1,4 @@
-const { noteModel, noteResolvedModel, userModel } = require("../models/mongoDBModels")
+const { productModel, cartModel, userModel, chatModel, orderModel } = require("../models/mongoDBModels")
 const logger = require('../log/log4js')
 const bcrypt = require('bcrypt')
 
@@ -49,52 +49,126 @@ class mongoDBDAO {
         );
     };
 
-    //___note___//
+    //___PRODUCT___//
 
-    saveNote = async (noteToAdd) => {
-        const note = new noteModel(noteToAdd);
-        await note.save();
-        console.log("guardado", note)
+    saveProduct = async (productToAdd) => {
+        const product = new productModel(productToAdd);
+        await product.save();
+        console.log("guardado", product)
     };
 
-    getNotes = async () => await noteModel.find({});
+    getProducts = async () => await productModel.find({});
 
-    saveResolvedNote = async (noteToAdd) => {
-        const note = new noteResolvedModel(noteToAdd);
-        await note.save();
-        console.log("guardado", note)
-    };
+    getProductById = async (id) => await productModel.findOne({ _id: id });
 
-    getResolvedNotes = async () => await noteResolvedModel.find({});
+    deleteProduct = async (id) => await productModel.deleteOne({ _id: id });
 
-    getNoteById = async (id) => await noteModel.findOne({ _id: id });
+    deleteAllProducts = async () => await productModel.deleteMany();
 
-    getNoteResolvedById = async (id) => await noteResolvedModel.findOne({ _id: id });
-
-    deleteNote = async (id) => await noteModel.deleteOne({ _id: id });
-
-    deleteNoteResolved = async (limit) => {
-        try {
-            // Busca y selecciona las notas con la fecha más antigua (ascendente) hasta el límite especificado.
-            const oldestNotes = await noteResolvedModel.find().sort({ fecha: 1 }).limit(limit);
-
-            // Elimina las notas seleccionadas.
-            await noteResolvedModel.deleteMany({ _id: { $in: oldestNotes.map(note => note._id) } });
-
-            console.log(`Se eliminaron ${oldestNotes.length} notas más antiguas.`);
-        } catch (error) {
-            console.error('Error al eliminar notas:', error);
-        }
-    };
-
-    deleteAllNotes = async () => await noteModel.deleteMany();
-
-    updateNote = async (id, noteToUpdate) => {
-        return await noteModel.updateOne(
+    updateProduct = async (id, productToUpdate) => {
+        return await productModel.updateOne(
             { _id: id },
-            { $set: { ...noteToUpdate } }
+            { $set: { ...productToUpdate } }
         );
     };
+
+
+
+    //___CART___//
+
+    async newCart(username, adress) {
+        try {
+            const newCart = new cartModel({
+                userEmail: username,
+                products: [],
+                adress: adress
+            })
+            return await newCart.save()
+
+        } catch (error) {
+            logger.error(error)
+        }
+    }
+
+
+    async getCart(username) {
+        try {
+            return await cartModel.findOne({ userEmail: username })
+        } catch (error) {
+            logger.warn(`Error: ${error} al recuperar cart.`)
+            return false
+        }
+    }
+
+
+    async addProductToCart(itemId, number, username) {
+        try {
+            const response = await cartModel.findOneAndUpdate(
+                { userEmail: username, "products.id": itemId },
+                { $inc: { "products.$.number": number } },
+                { new: true }
+            )
+            if (!response) {
+                await cartModel.findOneAndUpdate(
+                    { userEmail: username },
+                    { $push: { products: { id: itemId, number: number } } },
+                    { new: true }
+                )
+            }
+            return true
+        } catch (err) {
+            logger.warn(`Error: ${err} al agregar el producto al cart`)
+            return false
+        }
+    }
+
+
+    async deleteProductFromCart(itemId, username) {
+        try {
+            const response = await cartModel.findOneAndUpdate(
+                { username: username },
+                { $pull: { products: { id: itemId } } },
+                { new: true }
+            )
+            return response ? true : false
+        } catch (err) {
+            logger.warn(`Error: ${err} al borrar el producto del cart.`)
+            return false
+        }
+    }
+
+
+    async deleteCart(username) {
+        try {
+            const response = await cartModel.findOneAndUpdate(
+                { userEmail: username },
+                {
+                    $set: {
+                        products: [],
+                        timestamp: new Date().getTime()
+                    }
+                }
+            )
+            return response ? true : false
+        } catch (error) {
+            logger.warn(`Error: ${error} al borrar cart`)
+            return false
+        }
+    }
+
+    async newOrder(order) {
+        try {
+            const orderNumber = await orderModel.countDocuments()
+            const newOrder = new orderModel({ ...order, orderNumber: orderNumber + 1 })
+            await newOrder.save()
+                .then(order => logger.info(`Se ha agregado a la base de datos orden de compra con id: ${order._id}`))
+                .catch(err => logger.warn(`Se ha produciodo error ${err} al intentar crear una nueva orden de compra`))
+            return true
+        } catch (err) {
+            logger.warn(`Error: ${err} al intentar crear el pedido.`)
+            return false
+        }
+    }
 
 }
 

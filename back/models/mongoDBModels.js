@@ -2,22 +2,37 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 const { Schema, model } = mongoose
 
+const cartSchema = new Schema({
+    userEmail: { type: String, required: true },
+    timestamp: { type: Date, default: Date.now },
+    products: { type: Array, required: true },
+    address: { type: String, required: true },
+})
 
-const notesSchema = new Schema({
-    idnota: { type: String },
-    title: { type: String },
-    note: { type: String },
-    fecha: { type: String },
-    creador: { type: String },
-    estacion: { type: String },
+const orderSchema = new Schema({
+    products: { type: Array, required: true },
+    orderNumber: { type: Number, required: true },
+    timestamp: { type: Date, default: Date.now },
+    status: { type: String, default: 'Generada' },
+    userEmail: { type: String, required: true }
+})
+
+const chatSchema = new Schema({
+    name: { type: String, require: true },
+    text: { type: String, require: true },
+    date: { type: Date, require: true },
 });
 
 
-const notesResolvedSchema = new Schema({
+const productschema = new Schema({
+    timestamp: { type: Number, require: true },
     title: { type: String },
-    fecha: { type: String },
-    creador: { type: String },
-    estacion: { type: String },
+    thumbnail: { type: String },
+    description: { type: String },
+    stock: { type: Number },
+    date: { type: Number, require: true },
+    code: { type: String },
+    price: { type: Number }
 });
 
 
@@ -55,9 +70,11 @@ userSchema.pre('save', function (next) {
 });
 
 
-const noteModel = model('Notes', notesSchema)
+const cartModel = model('Cart', cartSchema)
+const orderModel = model('Order', orderSchema)
+const chatModel = model('Chat', chatSchema);
+const productModel = model('Products', productschema)
 const userModel = model('User', userSchema)
-const noteResolvedModel = model('NotesResolved', notesResolvedSchema)
 
 
-module.exports = { noteModel, userModel, noteResolvedModel }
+module.exports = { orderModel, cartModel, chatModel, productModel, userModel }
