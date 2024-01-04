@@ -24,7 +24,7 @@ const chatSchema = new Schema({
 });
 
 
-const productschema = new Schema({
+const productSchema = new Schema({
     timestamp: { type: Number, require: true },
     title: { type: String },
     thumbnail: { type: String },
@@ -73,7 +73,7 @@ userSchema.pre('save', function (next) {
 const cartModel = model('Cart', cartSchema)
 const orderModel = model('Order', orderSchema)
 const chatModel = model('Chat', chatSchema);
-const productModel = model('Products', productschema)
+const productModel = model('Products', productSchema)
 const userModel = model('User', userSchema)
 
 
