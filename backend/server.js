@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+
 const cors = require('cors');
 const app = express();
 app.use(express.json());
@@ -7,15 +7,6 @@ app.use(cors());
 
 // Conexión a MongoDB
 mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Modelo de Producto
-const Product = mongoose.model('Product', new mongoose.Schema({
-    name: String,
-    price: Number,
-    description: String,
-    imageUrl: String,
-    stock: Number,
-}));
 
 // Rutas
 app.get('/products', async (req, res) => {
