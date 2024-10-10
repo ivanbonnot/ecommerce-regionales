@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
 // Modelo de Producto
-const Product = mongoose.model('Product', new mongoose.Schema({
+const ProductModel = mongoose.model('Product', new mongoose.Schema({
+    idProduct: String,
     name: String,
     price: Number,
     description: String,
     imageUrl: String,
     stock: Number,
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
 }));
 
-module.export = Product;
+module.export = ProductModel;
