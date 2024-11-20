@@ -8,6 +8,7 @@ const ProductModel = mongoose.model('Product', new mongoose.Schema({
     description: String,
     imageUrl: String,
     stock: Number,
+    date: String,
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
 }));
 
